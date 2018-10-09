@@ -1,0 +1,8 @@
+.Python
+[options="header"]
+|=======================
+|     |Dla Ruby   |Dla Pythona
+|1    |Cloc       |Cloc
+|2    |Flog       |Pylint
+|3    |RuboCop    |pycodestyle 
+|=======================
