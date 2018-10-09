@@ -1,7 +1,7 @@
 .Python
 [options="header"]
 |=======================
-|     |Dla Ruby   |Dla Pythona
+|     |Ruby       |Python
 |1    |Cloc       |Cloc
 |2    |Flog       |Pylint
 |3    |RuboCop    |pycodestyle 
