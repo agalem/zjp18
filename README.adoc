@@ -1,8 +1,17 @@
-.Python
+== Narzędzia dla Pythona
 [options="header"]
 |=======================
-|     |Ruby       |Python
-|1    |Cloc       |Cloc
-|2    |Flog       |Pylint
-|3    |RuboCop    |pycodestyle 
+|l.p. |Ruby       |Python         |Rola narzędzia
+|1    |Cloc       |Cloc           |counts blank lines, comment lines, and physical lines of source code
+|2    |Flog       |Pylint         |looks for programming errors, helps enforcing a coding standard and sniffs for some code smells. It additionally includes pyreverse (an UML diagram generator) and symilar (a similarities checker).
+|3    |RuboCop    |pycodestyle    |check Python code against some of the style conventions in PEP 8
+|4    |           |pyflakes       |A simple program which checks Python source files for errors
+|=======================
+
+== Środowisko pracy
+|=======================
+|1    |MacOS v.10.13.6  |Środowisko operacyjne
+|2    |Github           |
+|3    |Visual Studio Code |Edytor
+|4    |Python           |Język programowania
 |=======================
