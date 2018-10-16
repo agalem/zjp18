@@ -17,7 +17,7 @@
 |=======================
 
 == Przydatne linki
-Cloc - link:https://github.com/AlDanial/cloc
-Pylint - link:https://github.com/PyCQA/pylint
-pycodestyle - link:https://github.com/PyCQA/pycodestyle
-pyflakes - https://github.com/PyCQA/pyflakes
+- Cloc - https://github.com/AlDanial/cloc
+- Pylint - https://github.com/PyCQA/pylint
+- pycodestyle - https://github.com/PyCQA/pycodestyle
+- pyflakes - https://github.com/PyCQA/pyflakes
