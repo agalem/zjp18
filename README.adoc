@@ -15,3 +15,9 @@
 |3    |Visual Studio Code |Edytor
 |4    |Python           |Język programowania
 |=======================
+
+== Przydatne linki
+Cloc - link:https://github.com/AlDanial/cloc
+Pylint - link:https://github.com/PyCQA/pylint
+pycodestyle - link:https://github.com/PyCQA/pycodestyle
+pyflakes - https://github.com/PyCQA/pyflakes
