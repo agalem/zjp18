@@ -1,4 +1,4 @@
-== Zaawansowane Języki Programowania - laboratorium
+= Zaawansowane Języki Programowania - laboratorium
 
 == Narzędzia dla Pythona
 [options="header"]
