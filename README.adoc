@@ -3,12 +3,13 @@
 == Narzędzia dla Pythona
 [options="header"]
 |=======================
-|l.p. |Ruby       |Python         |Rola narzędzia
-|1    |Cloc       |Cloc           |counts blank lines, comment lines, and physical lines of source code
-|2    |Flog       |Pylint         |looks for programming errors, helps enforcing a coding standard and sniffs for some code smells. It additionally includes pyreverse (an UML diagram generator) and symilar (a similarities checker).
-|3    |RuboCop    |pycodestyle    |check Python code against some of the style conventions in PEP 8
-|4    |           |pyflakes       |A simple program which checks Python source files for errors
-|5    |Flog       |Radon          |Rating code (letter scale)
+|l.p. |Python         |Rola narzędzia
+|1    |Cloc           |counts blank lines, comment lines, and physical lines of source code
+|2    |Pylint         |looks for programming errors, helps enforcing a coding standard and sniffs for some code smells. It additionally includes pyreverse (an UML diagram generator) and symilar (a similarities checker).
+|3    |pycodestyle    |check Python code against some of the style conventions in PEP 8
+|4    |pyflakes       |A simple program which checks Python source files for errors
+|5    |Radon          |Rating code (letter scale)
+|6    |mccabe         |Complexity checker
 |=======================
 
 == Środowisko pracy
@@ -25,3 +26,4 @@
 - pycodestyle - https://github.com/PyCQA/pycodestyle
 - pyflakes - https://github.com/PyCQA/pyflakes
 - Radon - https://radon.readthedocs.io/en/latest/intro.html
+- Maccabe - https://github.com/PyCQA/mccabe
