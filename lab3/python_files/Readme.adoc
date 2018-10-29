@@ -17,7 +17,7 @@
 |=======================
 
 .file.py
-```python
+```
 class Bird(object):
   name = ''
   flightless = False
