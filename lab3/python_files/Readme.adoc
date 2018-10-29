@@ -1,0 +1,50 @@
+== Obliczanie złożoności cyklicznej
+=== Na podstawie https://radon.readthedocs.io/en/latest/intro.html#cyclomatic-complexity[dokumentacji] narzędzia Radon
+[options="header"]
+|=======================
+|Construct        |Efect on CC     |Reasoning
+|if               |+1              |An _if_ statement is a single decision.
+|elseif           |+1              |The _elif_ statement adds another decision.
+|else             |+0              |The _else_ statement does not cause a new decision. The decision is at the _if_.
+|for              |+1              |There is a decision at the start of the loop.
+|while            |+1              |There is a decision at the _while_ statement.
+|except           |+1              |Each _except_ branch adds a new conditional path of execution.
+|finally          |+0              |The _finally_ block is unconditionally executed.
+|with             |+1              |The _with_ statement roughly corresponds to a try/except block (see PEP 343 for details).
+|assert           |+1              |The _assert_ statement internally roughly equals a conditional statement.
+|Comprehension    |+1              |A list/set/dict comprehension of generator expression is equivalent to a for loop.
+|Boolean Operator |+1              |Every boolean operator (and, or) adds a decision point.
+|=======================
+
+.file.py
+```python
+class Bird(object):
+  name = ''
+  flightless = False
+  extinct = False
+
+  def get_speed(self):  
+    [red]#if# self.extinct:
+      return -1 # we do not care about extinct bird speeds
+    else:
+      [red]#if# self.flightless:
+        [red]#if# self.name == 'Ostrich':
+          return 15
+        [blue]#elif# self.name == 'Chicken':
+          return 7
+        [blue]#elif# self.name == 'Flamingo':
+          return 8
+        else:
+          return -1 # bird name not implemented
+      else:
+        [red]#if# self.name == 'Gold Finch':
+          return 12
+        [blue]#elif# self.name == 'Bluejay':
+          return 10
+        [blue]#elif# self.name == 'Robin':
+          return 14
+        [blue]#elif# self.name == 'Hummingbird':
+          return 16
+        else:
+          return -1 # bird not implemented
+```
