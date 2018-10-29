@@ -25,28 +25,35 @@ class Bird(object):
   flightless = False
   extinct = False
 
-  def get_speed(self):  
-    if self.extinct:
+  def get_speed(self):                  # 10 = 1 +
+    if self.extinct:                    # 1 +
       return -1 # we do not care about extinct bird speeds
     else:
-      if self.flightless:               
-        if self.name == 'Ostrich':
+      if self.flightless:               # 1 +
+        if self.name == 'Ostrich':      # 1 +
           return 15
-        elif self.name == 'Chicken':
+        elif self.name == 'Chicken':    # 1 +
           return 7
-        elif self.name == 'Flamingo':
+        elif self.name == 'Flamingo':   # 1 +
           return 8
         else:
           return -1 # bird name not implemented
       else:
-        if self.name == 'Gold Finch':
+        if self.name == 'Gold Finch':   # 1 +
           return 12
-        elif self.name == 'Bluejay':
+        elif self.name == 'Bluejay':    # 1 +
           return 10
-        elif self.name == 'Robin':
+        elif self.name == 'Robin':      # 1 +
           return 14
-        elif self.name == 'Hummingbird':
+        elif self.name == 'Hummingbird':  # 1
           return 16
         else:
           return -1 # bird not implemented
+```
+
+```sh
+radon cc -s python_files/file.py
+    python_files/file.py
+        C 1:0 Bird - B (10)
+        M 6:2 Bird.get_speed - B (10)
 ```
