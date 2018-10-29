@@ -2,7 +2,7 @@
 === Na podstawie https://radon.readthedocs.io/en/latest/intro.html#cyclomatic-complexity[dokumentacji] narzędzia Radon
 [options="header"]
 
-Cyclomatic Complexity corresponds to the number of decisions a block of code contains plus 1.
+*Cyclomatic Complexity* corresponds to the number of decisions a block of code contains plus 1.
 |=======================
 |Construct        |Efect on CC     |Reasoning
 |if               |+1              |An _if_ statement is a single decision.
