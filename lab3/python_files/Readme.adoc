@@ -25,27 +25,24 @@ class Bird(object):
   flightless = False
   extinct = False
 
-  def get_speed(self):                  # 10 = 1 +
-    if self.extinct:                    # 1 +
-      return -1 # we do not care about extinct bird speeds
-    else:
-      if self.flightless:               # 1 +
-        if self.name == 'Ostrich':      # 1 +
+  def get_speed(self):                                            # 16 = 
+      if self.flightless:                                         # 1 + 1 +
+        if self.name == 'Ostrich' and self.extinct == False:      # 1 + 1 +
           return 15
-        elif self.name == 'Chicken':    # 1 +
+        elif self.name == 'Chicken' and self.extinct == False:    # 1 + 1 +
           return 7
-        elif self.name == 'Flamingo':   # 1 +
+        elif self.name == 'Flamingo' and self.extinct == False:   # 1 + 1 +
           return 8
         else:
           return -1 # bird name not implemented
       else:
-        if self.name == 'Gold Finch':   # 1 +
+        if self.name == 'Gold Finch' and self.extinct == False:   # 1 + 1 +
           return 12
-        elif self.name == 'Bluejay':    # 1 +
+        elif self.name == 'Bluejay' and self.extinct == False:    # 1 + 1 + 
           return 10
-        elif self.name == 'Robin':      # 1 +
+        elif self.name == 'Robin' and self.extinct == False:      # 1 + 1 +
           return 14
-        elif self.name == 'Hummingbird':  # 1
+        elif self.name == 'Hummingbird' and self.extinct == False:  # 1 + 1
           return 16
         else:
           return -1 # bird not implemented
@@ -54,53 +51,6 @@ class Bird(object):
 ```sh
 radon cc -s python_files/file.py
     python_files/file.py
-        C 1:0 Bird - B (10)
-        M 6:2 Bird.get_speed - B (10)
-```
-
-```sh
-pylint lab3/python_files/file.py
-
-  ************* Module file
-  W:  2, 0: Bad indentation. Found 2 spaces, expected 4 (bad-indentation)
-  W:  3, 0: Bad indentation. Found 2 spaces, expected 4 (bad-indentation)
-  W:  4, 0: Bad indentation. Found 2 spaces, expected 4 (bad-indentation)
-  W:  6, 0: Bad indentation. Found 2 spaces, expected 4 (bad-indentation)
-  W:  7, 0: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
-  W:  8, 0: Bad indentation. Found 6 spaces, expected 12 (bad-indentation)
-  W:  9, 0: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
-  W: 10, 0: Bad indentation. Found 6 spaces, expected 12 (bad-indentation)
-  W: 11, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  W: 12, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  W: 13, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  W: 14, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  W: 15, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  W: 16, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  W: 17, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  W: 18, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  W: 19, 0: Bad indentation. Found 6 spaces, expected 12 (bad-indentation)
-  W: 20, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  W: 21, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  W: 22, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  W: 23, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  W: 24, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  W: 25, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  W: 26, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  W: 27, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  W: 28, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
-  C: 29, 0: Final newline missing (missing-final-newline)
-  W: 29, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
-  C:  1, 0: Missing module docstring (missing-docstring)
-  C:  1, 0: Missing class docstring (missing-docstring)
-  C:  6, 2: Missing method docstring (missing-docstring)
-  R:  7, 4: Unnecessary "else" after "return" (no-else-return)
-  R: 10, 6: Unnecessary "else" after "return" (no-else-return)
-  R: 11, 8: Unnecessary "else" after "return" (no-else-return)
-  R: 20, 8: Unnecessary "else" after "return" (no-else-return)
-  R:  6, 2: Too many return statements (10/6) (too-many-return-statements)
-  R:  1, 0: Too few public methods (1/2) (too-few-public-methods)
-
-  ------------------------------------
-  Your code has been rated at -5.42/10
-
+        C 1:0 Bird - C (16)
+        M 6:2 Bird.get_speed - C (16)
 ```
