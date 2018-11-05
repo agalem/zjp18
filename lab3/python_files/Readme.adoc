@@ -18,7 +18,7 @@
 |Boolean Operator |+1              |Every boolean operator (and, or) adds a decision point.
 |=======================
 
-.file.py
+.bird.py
 ```python
 class Bird(object):
   name = ''
@@ -53,4 +53,50 @@ radon cc -s python_files/file.py
     python_files/file.py
         C 1:0 Bird - C (16)
         M 6:2 Bird.get_speed - C (16)
+```
+
+.selection.py
+```python
+def selection(chart, prime_implicants):     # 17  = 1 +
+	temp = []
+	select = [0]*len(chart)
+	for i in range(len(chart[0])):            # 1 +
+		count = 0
+		rem = -1
+		for j in range(len(chart)):             # 1 +
+			if chart[j][i] == 1:                  # 1 +
+				count += 1
+				rem = j
+		if count == 1:                          # 1 +
+			select[rem] = 1
+	for i in range(len(select)):              # 1 +
+		if select[i] == 1:                      # 1 +
+			for j in range(len(chart[0])):        # 1 +
+				if chart[i][j] == 1:                # 1 +
+					for k in range(len(chart)):       # 1 +
+						chart[k][j] = 0 
+			temp.append(prime_implicants[i])
+	while 1:                                  # 1 +
+		max_n = 0; rem = -1; count_n = 0
+		for i in range(len(chart)):             # 1 +
+			count_n = chart[i].count(1)
+			if count_n > max_n:                   # 1 +
+				max_n = count_n
+				rem = i
+		
+		if max_n == 0:                          # 1 +
+			return temp
+		
+		temp.append(prime_implicants[rem])
+		
+		for i in range(len(chart[0])):          # 1 +
+			if chart[rem][i] == 1:                # 1 +
+				for j in range(len(chart)):         # 1
+					chart[j][i] = 0
+```
+
+```sh
+radon cc -s python_files/file.py
+    python_files/selection.py
+        F 1:0 Bird - C (17)
 ```
