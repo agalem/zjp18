@@ -18,69 +18,43 @@
 |Boolean Operator |+1              |Every boolean operator (and, or) adds a decision point.
 |=======================
 
-.bird.py
-```python
-class Bird(object):
-  name = ''
-  flightless = False
-  extinct = False
+|=======================
+|Complexity Score        |Grade
+|1 - 5                   | A (low risk - simple block)
+|6 - 10           	 | B (low risk - well structured and stable block)
+|11 - 20             	 | C (moderate risk - slightly complex block)
+|21 - 30              	 | D (more than moderate risk - more complex block)
+|31 - 40                 | E (high risk - complex block, alarming)
+|41+           		 | F (very high risk - error-prone, unstable block
+|=======================
 
-  def get_speed(self):                                            # 16 = 
-      if self.flightless:                                         # 1 + 1 +
-        if self.name == 'Ostrich' and self.extinct == False:      # 1 + 1 +
-          return 15
-        elif self.name == 'Chicken' and self.extinct == False:    # 1 + 1 +
-          return 7
-        elif self.name == 'Flamingo' and self.extinct == False:   # 1 + 1 +
-          return 8
-        else:
-          return -1 # bird name not implemented
-      else:
-        if self.name == 'Gold Finch' and self.extinct == False:   # 1 + 1 +
-          return 12
-        elif self.name == 'Bluejay' and self.extinct == False:    # 1 + 1 + 
-          return 10
-        elif self.name == 'Robin' and self.extinct == False:      # 1 + 1 +
-          return 14
-        elif self.name == 'Hummingbird' and self.extinct == False:  # 1 + 1
-          return 16
-        else:
-          return -1 # bird not implemented
-```
-
-```sh
-radon cc -s python_files/file.py
-    python_files/file.py
-        C 1:0 Bird - C (16)
-        M 6:2 Bird.get_speed - C (16)
-```
 
 .selection.py
 ```python
-def selection(chart, prime_implicants):                   # 17  = 1 +
+def selection(chart, prime_implicants):                              # 17  = 1 +
 	temp = []
 	select = [0]*len(chart)
-	for i in range(len(chart[0])):                          # 1 +
+	for i in range(len(chart[0])):                               # 1 +
 		count = 0
 		rem = -1
-		for j in range(len(chart)):                           # 1 +
-			if chart[j][i] == 1:                                # 1 +
+		for j in range(len(chart)):                          # 1 +
+			if chart[j][i] == 1:                         # 1 +
 				count += 1
 				rem = j
-		if count == 1:                                        # 1 +
+		if count == 1:                                       # 1 +
 			select[rem] = 1
-	for i in range(len(select)):                            # 1 +
-		if select[i] == 1:                                    # 1 +
-			for j in range(len(chart[0])):                      # 1 +
-				if chart[i][j] == 1:                              # 1 +
-					for k in range(len(chart)):                     # 1 +
+	for i in range(len(select)):                                 # 1 +
+		if select[i] == 1:                                   # 1 +
+			for j in range(len(chart[0])):               # 1 +
+				if chart[i][j] == 1:                 # 1 +
+					for k in range(len(chart)):  # 1 +
 						chart[k][j] = 0 
 			temp.append(prime_implicants[i])
-	while 1:                                                # 1 +
+	while 1:                                                      # 1 +
 		max_n = 0; rem = -1; count_n = 0
 		for i in range(len(chart)):                           # 1 +
 			count_n = chart[i].count(1)
-			if count_n > max_n:                                 # 1 +
+			if count_n > max_n:                           # 1 +
 				max_n = count_n
 				rem = i
 		
@@ -90,13 +64,13 @@ def selection(chart, prime_implicants):                   # 17  = 1 +
 		temp.append(prime_implicants[rem])
 		
 		for i in range(len(chart[0])):                        # 1 +
-			if chart[rem][i] == 1:                              # 1 +
-				for j in range(len(chart)):                       # 1
+			if chart[rem][i] == 1:                        # 1 +
+				for j in range(len(chart)):           # 1
 					chart[j][i] = 0
 ```
 
 ```sh
 radon cc -s python_files/file.py
     python_files/selection.py
-        F 1:0 Bird - C (17)
+        F 1:0 selection - C (17)
 ```
