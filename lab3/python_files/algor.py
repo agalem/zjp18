@@ -1,129 +1,106 @@
-#Quine-McCluskey-Algorithm
-#This algorithm is used for minimization of boolean expression for given minterms. 
-#This was developed by Willard V. Quine and extended by Edward J. McCluskey.
+"""
+This is pure python implementation of tree traversal algorithms
+"""
+from __future__ import print_function
+import queue
 
-#function to compare two minterms, check whether they can combined or not
-def compare_string(string1, string2):
-	l1 = list(string1); l2 = list(string2)
-	count = 0
-	for i in range(len(l1)):
-		if l1[i] != l2[i]:
-			count += 1
-			l1[i] = '_'
-	if count > 1:
-		return -1
-	else:
-		return("".join(l1))
-#funtion to find prime implicants 
-def check(binary):
-	pi = []
-	while 1:
-		check1 = ['$']*len(binary)
-		temp = []
-		for i in range(len(binary)):
-			for j in range(i+1, len(binary)):
-				k=compare_string(binary[i], binary[j])
-				if k != -1:
-					check1[i] = '*'
-					check1[j] = '*'
-					temp.append(k)
-		for  i in range(len(binary)):
-			if check1[i] == '$':
-				pi.append(binary[i])
-		if len(temp) == 0:
-			return pi
-		binary = list(set(temp))
-#conversion of decimal representation of minters into binary
-def decimal_to_binary(no_of_variable, minterms):
-	temp = []
-	s = ''
-	for m in minterms:
-		for i in range(no_of_variable):
-			s = str(m%2) + s
-			m //= 2
-		temp.append(s)
-		s = ''
-	return temp
-#check from where prime implicant is minimized
-def is_for_table(string1, string2, count):
-	l1 = list(string1);l2=list(string2)
-	count_n = 0
-	for i in range(len(l1)):
-		if l1[i] != l2[i]:
-			count_n += 1
-	if count_n == count:
-		return True
-	else:
-		return False 
-#function to find the essential prime implicants and other minimized terms
-def selection(chart, prime_implicants):
-	temp = []
-	select = [0]*len(chart)
-	for i in range(len(chart[0])):
-		count = 0
-		rem = -1
-		for j in range(len(chart)):
-			if chart[j][i] == 1:
-				count += 1
-				rem = j
-		if count == 1:
-			select[rem] = 1
-	for i in range(len(select)):
-		if select[i] == 1:
-			for j in range(len(chart[0])):
-				if chart[i][j] == 1:
-					for k in range(len(chart)):
-						chart[k][j] = 0 
-			temp.append(prime_implicants[i])
-	while 1:
-		max_n = 0; rem = -1; count_n = 0
-		for i in range(len(chart)):
-			count_n = chart[i].count(1)
-			if count_n > max_n:
-				max_n = count_n
-				rem = i
-		
-		if max_n == 0:
-			return temp
-		
-		temp.append(prime_implicants[rem])
-		
-		for i in range(len(chart[0])):
-			if chart[rem][i] == 1:
-				for j in range(len(chart)):
-					chart[j][i] = 0
-#prime implicants chart		
-def prime_implicant_chart(prime_implicants, binary):
-	chart = [[0 for x in range(len(binary))] for x in range(len(prime_implicants))]
-	for i in range(len(prime_implicants)):
-		count = prime_implicants[i].count('_')
-		for j in range(len(binary)):
-			if(is_for_table(prime_implicants[i], binary[j], count)):
-				chart[i][j] = 1
-	
-	return chart
+try:
+    raw_input          # Python 2
+except NameError:
+    raw_input = input  # Python 3
 
-def main():
-	
-	no_of_variable = int(input("Enter the no. of variables\n"))
-	#minterms 
-	minterms = [int(x) for x in input("Enter the decimal representation of Minterms 'Spaces Seprated'\n").split()]
-	#don't care conditions
-	dont_core = [int(x) for x in input("Enter the Don't care terms\n").split()]
-	
-	binary = decimal_to_binary(no_of_variable, minterms)
-	binarydc = decimal_to_binary(no_of_variable, dont_core)
-	
-	totalmin = binary + binarydc
-	prime_implicants = check(totalmin)
-	
-	print("Prime Implicants are:")
-	print(prime_implicants)
-	chart = prime_implicant_chart(prime_implicants, binary)
-	
-	essential_prime_implicants = selection(chart,prime_implicants)
-	print("Essential Prime Implicants are:")
-	print(essential_prime_implicants)
+
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.right = None
+        self.left = None
+
+
+def build_tree():
+    print("\n********Press N to stop entering at any point of time********\n")
+    print("Enter the value of the root node: ", end="")
+    check = raw_input().strip().lower()
+    if check == 'n':
+        return None 
+    data = int(check)
+    q = queue.Queue()
+    tree_node = TreeNode(data)
+    q.put(tree_node)
+    while not q.empty():
+        node_found = q.get()
+        print("Enter the left node of %s: " % node_found.data, end="")
+        check = raw_input().strip().lower()
+        if check == 'n':
+            return tree_node
+        left_data = int(check)
+        left_node = TreeNode(left_data)
+        node_found.left = left_node
+        q.put(left_node)
+        print("Enter the right node of %s: " % node_found.data, end="")
+        check = raw_input().strip().lower()
+        if check == 'n':
+            return tree_node
+        right_data = int(check)
+        right_node = TreeNode(right_data)
+        node_found.right = right_node
+        q.put(right_node)
+
+
+def pre_order(node):
+    if not isinstance(node, TreeNode) or not node:
+        return
+    print(node.data, end=" ")
+    pre_order(node.left)
+    pre_order(node.right)
+
+
+def in_order(node):
+    if not isinstance(node, TreeNode) or not node:
+        return
+    in_order(node.left)
+    print(node.data, end=" ")
+    in_order(node.right)
+
+
+def post_order(node):
+    if not isinstance(node, TreeNode) or not node:
+        return
+    post_order(node.left)
+    post_order(node.right)
+    print(node.data, end=" ")
+
+
+def level_order(node):
+    if not isinstance(node, TreeNode) or not node:
+        return
+    q = queue.Queue()
+    q.put(node)
+    while not q.empty():
+        node_dequeued = q.get()
+        print(node_dequeued.data, end=" ")
+        if node_dequeued.left:
+            q.put(node_dequeued.left)
+        if node_dequeued.right:
+            q.put(node_dequeued.right)
+
 
 if __name__ == '__main__':
-	main()
+    print("\n********* Binary Tree Traversals ************\n")
+
+    node = build_tree()
+    print("\n********* Pre Order Traversal ************")
+    pre_order(node)
+    print("\n******************************************\n")
+
+    print("\n********* In Order Traversal ************")
+    in_order(node)
+    print("\n******************************************\n")
+
+    print("\n********* Post Order Traversal ************")
+    post_order(node)
+    print("\n******************************************\n")
+
+    print("\n********* Level Order Traversal ************")
+    level_order(node)
+    print("\n******************************************\n")
