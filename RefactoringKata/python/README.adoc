@@ -1,0 +1,25 @@
+```sh
+radon cc -s gilded_rose_refactored.py
+gilded_rose_refactored.py
+    M 15:4 GildedRose.update_passes - B (8)
+    M 29:4 GildedRose.update_cake - B (6)
+    M 50:4 GildedRose.update_quality - B (6)
+    C 2:0 GildedRose - A (4)
+    M 7:4 GildedRose.update_brie - A (4)
+    M 41:4 GildedRose.update_default - A (4)
+    M 4:4 GildedRose.__init__ - A (1)
+    M 26:4 GildedRose.update_sulfuras - A (1)
+    C 64:0 Item - A (1)
+    M 65:4 Item.__init__ - A (1)
+    M 70:4 Item.__repr__ - A (1)
+
+    
+radon cc -s gilded_rose.py
+gilded_rose.py
+    M 7:4 GildedRose.update_quality - C (19)
+    C 2:0 GildedRose - B (10)
+    M 4:4 GildedRose.__init__ - A (1)
+    C 38:0 Item - A (1)
+    M 39:4 Item.__init__ - A (1)
+    M 44:4 Item.__repr__ - A (1)
+```
